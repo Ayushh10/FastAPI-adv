@@ -10,10 +10,7 @@ Books = [
     {"title": "Title Five", "Author": "Author Five", "category": "Category Five"}
 ]
 
-@app.get("/book")
-async def first_call():
-    return {"message": "Hello, Ayush!"}
-
 @app.get("/books")
 async def get_all_books():
     return Books
+
