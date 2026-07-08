@@ -1,11 +1,11 @@
-class Books:
+class Book:
     id: int
     title: str
     author: str
     description: str
     rating: int
 
-    def __init__(self, id, title, author, description, rating):
+    def __init__(self, id, title, author, description, rating): # type: ignore
         self.id = id
         self.title = title
         self.author = author
