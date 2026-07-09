@@ -56,7 +56,7 @@ async def update_book_info(book: RequestBody):
     book_changed = False
     for i in range(len(BOOKS)):
         if BOOKS[i].id == book.id:
-            BOOKS[i] = book                
+            BOOKS[i] = book                 # type: ignore
             book_changed = True             # type: ignore
             return {"Information updated": BOOKS[i]}
     if not book_changed:
