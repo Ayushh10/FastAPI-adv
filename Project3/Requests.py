@@ -9,6 +9,10 @@ class CreateUserRequest(BaseModel):
     password: str
     role: str
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
 class TodoRequest(BaseModel):
 
     # id: Optional[int] = None
