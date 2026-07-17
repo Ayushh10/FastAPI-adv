@@ -3,7 +3,7 @@ from starlette import status
 from fastapi import APIRouter, Depends, HTTPException, Path
 from sqlalchemy.orm import Session
 from Requests import TodoRequest
-from models import Todos, Users
+from models import Todos
 from database import SessionLocal
 from .auth import get_current_user
 

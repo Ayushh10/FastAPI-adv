@@ -13,6 +13,10 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
+class UserVerification(BaseModel):
+    old_password: str
+    new_password: str
+
 class TodoRequest(BaseModel):
 
     # id: Optional[int] = None
