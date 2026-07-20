@@ -10,24 +10,24 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_current_user_info(user: user_dependency, db: db_dependency): # type: ignore
-    if user is None:  # type: ignore
+async def get_current_user_info(user: user_dependency, db: db_dependency):
+    if user is None: 
         raise HTTPException(status_code=401, detail="Authentication Failed")
-    user_model = db.query(Users).filter(Users.id == user.get('id')).first() # type: ignore
+    user_model = db.query(Users).filter(Users.id == user.get('id')).first()
     return user_model
 
 @router.put("/update_password")
-async def change_password(user: user_dependency, db: db_dependency, password: UserVerification): # type: ignore
-    if user is None:  # type: ignore
+async def change_password(user: user_dependency, db: db_dependency, password: UserVerification):
+    if user is None: 
         raise HTTPException(status_code=401, detail="Authentication Failed")
     
-    user_model = db.query(Users).filter(Users.id == user.get('id')).first() # type: ignore
+    user_model = db.query(Users).filter(Users.id == user.get('id')).first()
 
     if not bcrypt_context.verify(password.old_password, user_model.hashed_password):                           # type: ignore
         raise HTTPException(status_code=401, detail="OLD PASSWORD MISMATCH")
 
     # print(f"old hash {todo_model.hashed_password}")
-    user_model.hashed_password = bcrypt_context.hash(password.new_password) # type: ignore
+    user_model.hashed_password = bcrypt_context.hash(password.new_password)
     # print(f"new hash {todo_model.hashed_password}")
     db.add(user_model)
     db.commit()
